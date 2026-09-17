@@ -1,23 +1,48 @@
-# Code Lingo
+# Analiza filmului Globisens Labdisc
 
-Website în română pentru copii, adolescenți și părinți. HTML, CSS și JavaScript, fără instalare sau dependențe.
+Aplicație web statică (HTML/CSS/JS, fără build) care prezintă analiza filmului
+de prezentare Globisens Labdisc: un rezumat, ideile principale și o cronologie
+pe care poți s-o apeși ca să sari direct la momentul respectiv din video.
 
-## Deschidere
-Deschide index.html într-un browser. Păstrează styles.css și script.js în același folder. Funcționează și fără internet. Meniul mobil și panourile de detalii sunt funcționale. Nu există formular sau înscrieri simulate.
+## Structură
 
-## Încărcare pe GitHub
-1. Creează un repository în contul tău GitHub.
-2. Încarcă toate fișierele din acest folder în rădăcina repository-ului, folosind opțiunea de încărcare a fișierelor.
-3. Salvează modificările.
+```
+index.html
+styles.css
+script.js
+video/globisens-stem-solution.mp4   ← videoul (comprimat, ~12 MB)
+```
 
-Website-ul nu a fost publicat. Pentru publicare ulterioară poți configura GitHub Pages, dacă această opțiune este disponibilă pentru contul și repository-ul tău.
+Video-ul inclus e o versiune comprimată (1280px, ~12 MB) a fișierului
+original, pentru că GitHub refuză fișierele de peste 100 MB fără Git LFS —
+originalul avea ~160 MB. Calitatea rămâne bună pentru redare pe web.
 
-## Înainte de lansare
-Completează și confirmă în index.html: grupele de vârstă și nivelurile, orarul, tarifele, locația, datele de contact, procedura de înscriere și condițiile de participare la ateliere. Textul actual nu inventează aceste informații. Confirmă descrierile programelor și abordarea educațională înainte de publicare.
+Dacă vrei să folosești alt fișier video, pune-l în folderul `video/` cu
+numele `globisens-stem-solution.mp4`, sau schimbă numele din `index.html`
+(caută linia cu `<source src="video/...">`).
+
+## Cum îl urci pe GitHub
+
+```bash
+git init
+git add .
+git commit -m "Analiza video Globisens Labdisc"
+git branch -M main
+git remote add origin https://github.com/<user-ul-tau>/<numele-repo>.git
+git push -u origin main
+```
+
+## Cum îl publici gratuit (GitHub Pages)
+
+1. Pe pagina repo-ului: **Settings → Pages**.
+2. La **Source**, alege branch-ul `main` și folderul `/ (root)`.
+3. Salvează — în 1-2 minute, pagina apare la
+   `https://<user-ul-tau>.github.io/<numele-repo>/`.
 
 ## Personalizare
-- index.html: textele și structura.
-- styles.css: culorile, aspectul și adaptarea la ecrane.
-- script.js: meniul mobil și anul din subsol.
 
-Fonturile sunt locale. Faviconul este inclus în HTML. Nu există resurse externe, urmărire sau cookie-uri.
+- **Cronologia** e în `index.html`, în secțiunea `<ol class="timeline">` —
+  fiecare `<li>` are `data-time="secunde"` și un text descriptiv.
+- **Ideile principale** sunt în secțiunea `<div class="idea-grid">`.
+- **Culori și fonturi** sunt în `styles.css`, la începutul fișierului
+  (variabilele din `:root`).
